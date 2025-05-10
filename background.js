@@ -16,7 +16,7 @@ window.addEventListener('resize', resizeCanvas);
 // Ball class
 class Ball {
     constructor() {
-        this.radius = Math.random() * 3 + 2;
+        this.radius = Math.random() * 3;
         this.x = Math.random() * canvas.width;
         this.y = Math.random() * canvas.height;
         this.dx = (Math.random() - 0.5) * 2;
@@ -44,7 +44,7 @@ class Ball {
 
 // Create balls
 const balls = [];
-const numBalls = 50;
+const numBalls = 150;
 for (let i = 0; i < numBalls; i++) {
     balls.push(new Ball());
 }
@@ -65,14 +65,14 @@ function animate() {
             const dx = balls[i].x - balls[j].x;
             const dy = balls[i].y - balls[j].y;
             const distance = Math.sqrt(dx * dx + dy * dy);
-            const maxDistance = 150;
+            const maxDistance = 200;
 
             if (distance < maxDistance) {
                 const opacity = 1 - (distance / maxDistance);
                 ctx.beginPath();
                 ctx.moveTo(balls[i].x, balls[i].y);
                 ctx.lineTo(balls[j].x, balls[j].y);
-                ctx.strokeStyle = `rgba(128, 128, 128, ${opacity * 0.5})`;
+                ctx.strokeStyle = `rgba(128, 128, 128, ${opacity * 0.9})`;
                 ctx.lineWidth = 1;
                 ctx.stroke();
                 ctx.closePath();
